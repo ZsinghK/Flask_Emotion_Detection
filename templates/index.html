@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emotion Detector</title>
+</head>
+<body>
+
+<h2>Emotion Detector</h2>
+
+<input
+    type="text"
+    id="textToAnalyze"
+>
+
+<button onclick="analyze()">
+    Analyze Emotion
+</button>
+
+<div id="result"></div>
+
+<script>
+
+function analyze() {
+
+    let text =
+        document.getElementById(
+            "textToAnalyze"
+        ).value;
+
+    fetch(
+        "/emotionDetector?textToAnalyze="
+        + text
+    )
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById(
+            "result"
+        ).innerHTML = data;
+    });
+}
+
+</script>
+
+</body>
+</html>
